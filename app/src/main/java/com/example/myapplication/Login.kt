@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import com.example.myapplication.databinding.FragmentLoginBinding
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -27,7 +29,11 @@ class Login : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        var binding = FragmentLoginBinding.inflate(layoutInflater, container, false)
+        binding.textView2.setOnClickListener {
+            findNavController().navigate(R.id.action_registration_to_login)
+        }
+        return binding.root
     }
 
     companion object {

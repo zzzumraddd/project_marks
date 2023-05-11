@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.myapplication.Database.AppDataBase
+import com.example.myapplication.Entity.User
+import com.example.myapplication.databinding.FragmentRegistrationBinding
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -21,12 +24,27 @@ class Registration : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
     }
+    val appDataBase: AppDataBase by lazy{
+        AppDataBase.getInstance(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_registration, container, false)
+        var binding = FragmentRegistrationBinding.inflate(inflater,container, false)
+
+        binding.save.setOnClickListener {
+            appDataBase.getUsersDao().addUser(
+                User(
+                    userName = binding.fullname.text.toString(),
+                    login = binding.name.text.toString(),
+                    password = binding.pass.text.toString(),
+                    role = binding.role.text.toString()
+                )
+            )
+        }
+        return binding.root
     }
 
     companion object {
