@@ -33,6 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:hintTextColor="@color/black"
         app:startIconCheckable="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -51,10 +52,12 @@
         app:boxStrokeColor="#28399A"
         app:endIconMode="custom"
         app:layout_constraintEnd_toEndOf="parent"
+        app:hintTextColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mail">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:textColor="@color/black"
             android:id="@+id/pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

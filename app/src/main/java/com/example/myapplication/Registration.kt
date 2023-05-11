@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.myapplication.Database.AppDataBase
 import com.example.myapplication.Entity.User
 import com.example.myapplication.databinding.FragmentRegistrationBinding
@@ -43,6 +44,7 @@ class Registration : Fragment() {
                     role = binding.role.text.toString()
                 )
             )
+            findNavController().navigate(R.id.action_registration_to_login2)
         }
         return binding.root
     }

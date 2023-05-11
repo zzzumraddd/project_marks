@@ -3,9 +3,9 @@ package com.example.myapplication.Entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "subjects")
 data class Subject(
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0,
-    var name: String
+    var subject_id: Int = 0,
+    var subject_name: String
 )

@@ -8,7 +8,7 @@
     android:background="#CAD0EF"
     >
     <TextView
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="100dp"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
