@@ -1,20 +1,21 @@
-package com.example.myapplication
+package com.example.myapplication.Adapter
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.myapplication.Adapter.Baholat_Adapter_For_Teachers
-import com.example.myapplication.Adapter.Bakholar_Adapter
-import com.example.myapplication.Adapter.Marks_List
-import com.example.myapplication.databinding.FragmentTeachersPageBinding
+import androidx.navigation.fragment.findNavController
+import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentPutMarkBinding
 
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class Teachers_Page : Fragment() {
+
+class PutMark : Fragment() {
+    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
@@ -30,11 +31,10 @@ class Teachers_Page : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-       val binding = FragmentTeachersPageBinding.inflate(layoutInflater, container, false)
-        var mutableList = mutableListOf<Marks_List>()
-        mutableList.add(Marks_List("Aliyev Ali",20,24,3,56))
-        var adapter = Baholat_Adapter_For_Teachers(mutableList)
-        binding.rv.setAdapter(adapter)
+        val binding = FragmentPutMarkBinding.inflate(inflater, container, false)
+        binding.button.setOnClickListener {
+            findNavController().navigate(R.id.action_putMark_to_teachers_Page)
+        }
         return binding.root
     }
 
@@ -43,7 +43,7 @@ class Teachers_Page : Fragment() {
 
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            Teachers_Page().apply {
+            PutMark().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
