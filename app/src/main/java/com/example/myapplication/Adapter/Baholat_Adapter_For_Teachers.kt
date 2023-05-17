@@ -2,11 +2,14 @@ package com.example.myapplication.Adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Entity.Marks
+import com.example.myapplication.R
 import com.example.myapplication.databinding.MarksItemBinding
 
-class Baholat_Adapter_For_Teachers (var list: MutableList<Marks_List>) : RecyclerView.Adapter<Baholat_Adapter_For_Teachers.ViewHolder>(){
+class Baholat_Adapter_For_Teachers (var list: MutableList<Marks_List>,  var contInterface: ContactInterface) : RecyclerView.Adapter<Baholat_Adapter_For_Teachers.ViewHolder>(){
     class ViewHolder(binding: MarksItemBinding): RecyclerView.ViewHolder(binding.root){
         var name = binding.subjectName
         var bsb1 = binding.bsb1
@@ -31,7 +34,7 @@ class Baholat_Adapter_For_Teachers (var list: MutableList<Marks_List>) : Recycle
         holder.jami.text = total.toString()
 
         holder.bsb1.setOnClickListener {
-            //bsb1
+           contInterface.onClick()
         }
         holder.bsb2.setOnClickListener {
             //bsb2
@@ -47,6 +50,9 @@ class Baholat_Adapter_For_Teachers (var list: MutableList<Marks_List>) : Recycle
 
     override fun getItemCount(): Int {
         return list.size
+    }
+    interface ContactInterface{
+        fun onClick()
     }
 
 }

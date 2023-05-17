@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.example.myapplication.Database.AppDataBase
 import com.example.myapplication.Entity.User
@@ -50,11 +50,16 @@ class Login : Fragment() {
                user = appDataBase.getUsersDao().getUser(login,password)
                Log.d("AAA", user.login)
               if(user.role.toLowerCase().equals("student")){
-                  findNavController().navigate(R.id.action_login2_to_students_Page)
+                  val bundle = bundleOf()
+                  bundle.putInt("student", user.user_id)
+                  findNavController().navigate(R.id.action_login2_to_students_Page, bundle)
               }
 
               if(user.role.toLowerCase().equals("teacher")){
-                  findNavController().navigate(R.id.action_login2_to_teachers_Page)
+                  val bundle = bundleOf()
+                  bundle.putInt("teacher", user.user_id)
+
+                  findNavController().navigate(R.id.action_login2_to_teachers_Page, bundle)
               }
            }
 
